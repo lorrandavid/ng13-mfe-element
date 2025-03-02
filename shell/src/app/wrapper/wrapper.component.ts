@@ -7,18 +7,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./wrapper.component.css']
 })
 export class WrapperComponent implements OnInit {
-  scriptURL = '';
+  baseURL = '';
+  scriptPath = '';
   elementName = '';
 
   constructor(private route: ActivatedRoute) { }
 
   async ngOnInit() {
     const data = this.route.snapshot.data;
-    this.scriptURL = data['scriptURL'];
+    this.baseURL = data['baseURL'];
+    this.scriptPath = data['scriptPath'];
     this.elementName = data['elementName'];
 
-    if (this.scriptURL && this.elementName) {
-      await this.loadScript(this.scriptURL);
+    if (this.baseURL && this.scriptPath && this.elementName) {
+      await this.loadScript(`${this.baseURL}/${this.scriptPath}`);
       this.createElement(this.elementName);
     }
   }

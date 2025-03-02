@@ -26,7 +26,8 @@ const routes: Routes = [
     component: WrapperComponent,
     data: {
       elementName: 'mfe1-root',
-      scriptURL: 'http://localhost:4201/mfe1.js'
+      baseURL: 'http://localhost:4201',
+      scriptPath: 'mfe1.js'
     }
   }
 ];
