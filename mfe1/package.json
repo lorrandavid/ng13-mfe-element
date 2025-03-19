@@ -6,7 +6,9 @@
     "start": "ng serve --port 4201",
     "build": "ng build && node concat.js && npx -y http-server dist/default/ --port 4201",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:dist": "npx -y http-server dist/default -p 4201 --cors",
+    "serve": "npm-run-all --parallel watch serve:dist"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +41,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "~4.6.2"
   }
 }

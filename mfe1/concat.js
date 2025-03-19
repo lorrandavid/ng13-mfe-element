@@ -7,6 +7,7 @@ async function build() {
   const files = [
     `./${baseDir}/runtime.js`,
     `./${baseDir}/polyfills.js`,
+    `./${baseDir}/vendor.js`,
     `./${baseDir}/main.js`
   ];
 

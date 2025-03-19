@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-wrapper',
@@ -20,7 +21,11 @@ export class WrapperComponent implements OnInit {
     this.elementName = data['elementName'];
 
     if (this.baseURL && this.scriptPath && this.elementName) {
-      await this.loadScript(`${this.baseURL}/${this.scriptPath}`);
+      const version = environment.production ? `?v=${new Date().getTime()}` : '';
+      await this.loadScript(`${this.baseURL}/runtime.js` + version);
+      await this.loadScript(`${this.baseURL}/polyfills.js` + version);
+      await this.loadScript(`${this.baseURL}/vendor.js` + version);
+      await this.loadScript(`${this.baseURL}/main.js` + version);
       this.createElement(this.elementName);
     }
   }
